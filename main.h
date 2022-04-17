@@ -1,38 +1,29 @@
 #ifndef MAIN_H
 #define MAIN_H
-
 #include <stdarg.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <limits.h>
-#include <stdio.h>
-
 
 /**
- * struct format - the struct by name stfmt
- * @fmt: index by function
- * @func: pointer to function - funtion print
- */
-typedef struct st_fmt
+  * struct specifiers - Struct specifiers
+  * @specifier: The conversion specifier
+  * @f: The function pointer
+  */
+typedef struct specifiers
 {
-	char *fmt;
-	int (*func)(va_list list);
-} st_fmt;
+	char *specifier;
+	int (*f)(va_list args);
+} spc_dt;
 
+int _write(char c);
 int _printf(const char *format, ...);
-int _putchar(char c);
-int func_string(va_list);
-int func_char(va_list);
-int func_percent(va_list);
-int get_match_func(const char *, va_list, st_fmt st_format[]);
-int func_digit(va_list);
-int func_binary_convert(va_list);
-int func_octal_convert(va_list);
-int func_hex_Upcase_convert(va_list);
-int func_hex_Lowcase_convert(va_list);
-int binary_oct_hex_convert(unsigned int, int, int);
-int func_unsig_int(va_list list);
-int func_stringUppercase(va_list list);
-int func_revstr(va_list list);
-int func_rot13(va_list);
-#endif /* HOLBERTON_H */
+int _print_a_char(va_list args);
+int _print_a_string(va_list args);
+int _print_format(const char *format, va_list args);
+int _print_spec(char format, va_list args);
+int _print_invalid_spec(char prev_format, char format, int count);
+int _print_a_integer(va_list args);
+void _recursion_integer(int a);
+int _print_int_binary(va_list args);
+void _recursion_int_binary(int a);
+int _validate_char(char _type);
+
+#endif /* _HOLBERTON
